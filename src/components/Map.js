@@ -30,7 +30,7 @@ const Map = compose(
       onClick = {(e) => props.whenMarkerClicked(index, marker.location.lat, marker.location.lng, e)}
     >
       {props.selectedMarkerIndex === index &&
-        <InfoWindow onCloseClick={props.onToggleOpen}>
+        <InfoWindow onCloseClick={props.whenInfoWindowClosed}>
           <div>{marker.name}</div>
         </InfoWindow>
       }

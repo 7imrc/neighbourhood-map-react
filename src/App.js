@@ -63,6 +63,15 @@ class App extends Component {
       //window.map.setZoom(this.state.zoom);
     }
 
+    //Action to take when the infowindow is closed
+    whenInfoWindowClosed = () => {
+      this.setState({
+        zoom: 12,
+        location: { lat: 50.8197675, lng: -1.0879769 }
+      })
+    }
+
+
 
   render() {
     return (
@@ -80,6 +89,7 @@ class App extends Component {
           selectedMarkerIndex = {this.state.selectedMarkerIndex}
           zoom = {this.state.zoom}
           location = {this.state.location}
+          whenInfoWindowClosed = {this.whenInfoWindowClosed}
         />
         <Footer />
       </div>
