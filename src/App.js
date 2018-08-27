@@ -77,17 +77,7 @@ class App extends Component {
       })
     }
 
-//--- Mouse events in search list ---//
 
-    // Action to take when location name is selected from the list.
-    whenSearchItemClicked = (id) => {
-      if(id === this.state.markers.id) {
-
-      }
-
-
-      this.whenMarkerClicked();
-    }
 
   render() {
     console.log('markers array....',this.state.markers);

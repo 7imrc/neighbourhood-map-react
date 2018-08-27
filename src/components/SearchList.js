@@ -5,9 +5,13 @@ class SearchList extends Component {
     //console.log('venues array...',this.props.venues);
     return (
       <div
-        className = "search-list"
+        className = "search-items"
         style = {{ height: '80%', width: '30%', float: 'left' }}
       >
+        <input
+          className = "text-field"
+          type = "text"
+        />
         <ul>
           {this.props.venues.map( (venue, index) => (
 
