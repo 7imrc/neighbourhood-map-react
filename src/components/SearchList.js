@@ -15,7 +15,7 @@ class SearchList extends Component {
                 key = {index}
                 onClick = {(e) => this.props.whenMarkerClicked(index, venue.location.lat, venue.location.lng, e)}
               >
-                {venue.name}<br/>{venue.location.lat}<br/>{venue.location.lng}
+                {venue.name}
               </li>
 
           ))}
