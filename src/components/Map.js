@@ -15,8 +15,8 @@ const Map = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={props.zoom}
-    defaultCenter={props.location}
+    zoom={props.zoom}
+    center={props.location}
   >
 
   { // For each marker stored in the marker state array, assign an
@@ -27,7 +27,7 @@ const Map = compose(
       key = {index}
       position = {{ lat: marker.location.lat, lng: marker.location.lng }}
       title = {marker.name}
-      onClick = {(e) => props.whenMarkerClicked(index, marker.position, e)}
+      onClick = {(e) => props.whenMarkerClicked(index, marker.location.lat, marker.location.lng, e)}
     >
       {props.selectedMarkerIndex === index &&
         <InfoWindow onCloseClick={props.onToggleOpen}>

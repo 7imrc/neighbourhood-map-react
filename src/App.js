@@ -51,17 +51,16 @@ class App extends Component {
     }
 
     // Action to take on clicking a marker
-    whenMarkerClicked = (index, position, e) => {
-      console.log("This marker has been clicked.....", index);
+    whenMarkerClicked = (index, latitude, longitude, e) => {
+      //console.log("This marker has been clicked.....", index);
       this.setState({
         selectedMarkerIndex: index,
-        zoom: 8,
-        center: position
+        zoom: 18,
+        location: { lat: latitude, lng: longitude }
       })
-      console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
-      this.setState({
-        zoom: 8
-      })
+      console.log(latitude,'     ',longitude);
+      //console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
+      //window.map.setZoom(this.state.zoom);
     }
 
 
