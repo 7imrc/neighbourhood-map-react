@@ -14,7 +14,8 @@ class App extends Component {
       markers: [],
       selectedMarkerIndex: '',
       zoom: 12,
-      location: { lat: 50.8197675, lng: -1.0879769 }
+      location: { lat: 50.8197675, lng: -1.0879769 },
+      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
     }
 
 
@@ -56,7 +57,8 @@ class App extends Component {
       this.setState({
         selectedMarkerIndex: index,
         zoom: 18,
-        location: { lat: latitude, lng: longitude }
+        location: { lat: latitude, lng: longitude },
+        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
       })
       console.log(latitude,'     ',longitude);
       //console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
@@ -67,7 +69,8 @@ class App extends Component {
     whenInfoWindowClosed = () => {
       this.setState({
         zoom: 12,
-        location: { lat: 50.8197675, lng: -1.0879769 }
+        location: { lat: 50.8197675, lng: -1.0879769 },
+        icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
       })
     }
 
@@ -90,6 +93,7 @@ class App extends Component {
           zoom = {this.state.zoom}
           location = {this.state.location}
           whenInfoWindowClosed = {this.whenInfoWindowClosed}
+          icon = {this.state.icon}
         />
         <Footer />
       </div>

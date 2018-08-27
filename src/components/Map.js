@@ -28,6 +28,7 @@ const Map = compose(
       position = {{ lat: marker.location.lat, lng: marker.location.lng }}
       title = {marker.name}
       onClick = {(e) => props.whenMarkerClicked(index, marker.location.lat, marker.location.lng, e)}
+      icon = {props.icon}
     >
       {props.selectedMarkerIndex === index &&
         <InfoWindow onCloseClick={props.whenInfoWindowClosed}>
