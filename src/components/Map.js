@@ -1,7 +1,7 @@
 // Code based on that provided by the react-google-map documentation
 // from https://tomchentw.github.io/react-google-maps/#infowindow
 import React from 'react';
-const { compose, withProps, withStateHandlers } = require("recompose");
+const { compose } = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
@@ -11,19 +11,12 @@ const {
 } = require("react-google-maps");
 
 const Map = compose(
-  withStateHandlers( () => ({
-    isOpen: false,
-  }), {
-    onToggleOpen: ({ isOpen }) => () => ({
-      isOpen: !isOpen,
-    })
-  }),
   withScriptjs,
   withGoogleMap
 )(props =>
   <GoogleMap
     defaultZoom={props.zoom}
-    defaultCenter={{ lat: 50.8197675, lng: -1.0879769 }}
+    defaultCenter={props.location}
   >
 
   { // For each marker stored in the marker state array, assign an
@@ -34,9 +27,9 @@ const Map = compose(
       key = {index}
       position = {{ lat: marker.location.lat, lng: marker.location.lng }}
       title = {marker.name}
-      onClick = {(index) => props.whenMarkerClicked(index)}
+      onClick = {(e) => props.whenMarkerClicked(index, marker.position, e)}
     >
-      {
+      {props.selectedMarkerIndex === index &&
         <InfoWindow onCloseClick={props.onToggleOpen}>
           <div>{marker.name}</div>
         </InfoWindow>

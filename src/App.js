@@ -13,7 +13,8 @@ class App extends Component {
       venues: [],
       markers: [],
       selectedMarkerIndex: '',
-      zoom: 15
+      zoom: 12,
+      location: { lat: 50.8197675, lng: -1.0879769 }
     }
 
 
@@ -50,10 +51,12 @@ class App extends Component {
     }
 
     // Action to take on clicking a marker
-    whenMarkerClicked = (index) => {
+    whenMarkerClicked = (index, position, e) => {
       console.log("This marker has been clicked.....", index);
       this.setState({
-        selectedMarkerIndex: index
+        selectedMarkerIndex: index,
+        zoom: 8,
+        center: position
       })
       console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
       this.setState({
@@ -77,6 +80,7 @@ class App extends Component {
           whenMarkerClicked = {this.whenMarkerClicked}
           selectedMarkerIndex = {this.state.selectedMarkerIndex}
           zoom = {this.state.zoom}
+          location = {this.state.location}
         />
         <Footer />
       </div>
