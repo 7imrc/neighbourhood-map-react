@@ -10,7 +10,8 @@ class App extends Component {
 
   // Set the states for the app.
     state = {
-      venues: []
+      venues: [],
+      markers: []
     }
 
   componentDidMount() {
@@ -31,7 +32,8 @@ class App extends Component {
           // venues array in state.
           .then( (data) => {
             this.setState({
-              venues: data.response.venues
+              venues: data.response.venues,
+              markers: data.response.venues
             })
           })
           // Error checking, log the contents of the venues array, to compare.
@@ -53,10 +55,12 @@ class App extends Component {
         <Header />
         <SearchList />
         <Map
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
+          googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement = {<div style={{ height: `100%` }} />}
+          containerElement = {<div style={{ height: `400px` }} />}
+          mapElement = {<div style={{ height: `100%` }} />}
+          venues = {this.state.venues}
+          markers = {this.state.markers}
         />
         <Footer />
       </div>
