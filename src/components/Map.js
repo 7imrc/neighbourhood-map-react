@@ -22,23 +22,23 @@ const Map = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={12}
+    defaultZoom={props.zoom}
     defaultCenter={{ lat: 50.8197675, lng: -1.0879769 }}
   >
 
   { // For each marker stored in the marker state array, assign an
-    //associated marker. 
+    //associated marker.
 
     props.markers.map( (marker, index) => (
     <Marker
       key = {index}
       position = {{ lat: marker.location.lat, lng: marker.location.lng }}
       title = {marker.name}
-      onClick = {props.onToggleOpen}
+      onClick = {(index) => props.whenMarkerClicked(index)}
     >
-      {props.isOpen &&
+      {
         <InfoWindow onCloseClick={props.onToggleOpen}>
-          <div>Contents of InfoWindow</div>
+          <div>{marker.name}</div>
         </InfoWindow>
       }
     </Marker>

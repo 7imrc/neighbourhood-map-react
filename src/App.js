@@ -11,8 +11,11 @@ class App extends Component {
   // Set the states for the app.
     state = {
       venues: [],
-      markers: []
+      markers: [],
+      selectedMarkerIndex: '',
+      zoom: 15
     }
+
 
   componentDidMount() {
       // Get the external data.
@@ -25,7 +28,7 @@ class App extends Component {
           .then( (response) => response.json())
           .then( (response) => {
             // Error checking to see if received data is in correct format
-            console.log(response.response.venues)
+            //console.log(response.response.venues)
             return response
           })
           // Pass the received data in the correct format to be stored in the empty
@@ -38,7 +41,7 @@ class App extends Component {
           })
           // Error checking, log the contents of the venues array, to compare.
           .then( () => {
-            console.log(this.state.venues)
+            //console.log(this.state.venues)
           })
           // If unable to obtain data from Foursquare, alert the user.
           .catch ( (error) => {
@@ -46,7 +49,17 @@ class App extends Component {
           })
     }
 
-
+    // Action to take on clicking a marker
+    whenMarkerClicked = (index) => {
+      console.log("This marker has been clicked.....", index);
+      this.setState({
+        selectedMarkerIndex: index
+      })
+      console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
+      this.setState({
+        zoom: 8
+      })
+    }
 
 
   render() {
@@ -61,6 +74,9 @@ class App extends Component {
           mapElement = {<div style={{ height: `100%` }} />}
           venues = {this.state.venues}
           markers = {this.state.markers}
+          whenMarkerClicked = {this.whenMarkerClicked}
+          selectedMarkerIndex = {this.state.selectedMarkerIndex}
+          zoom = {this.state.zoom}
         />
         <Footer />
       </div>
