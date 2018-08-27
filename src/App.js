@@ -51,6 +51,8 @@ class App extends Component {
           })
     }
 
+//--- Mouse events in map ---//
+
     // Action to take on clicking a marker
     whenMarkerClicked = (index, latitude, longitude, e) => {
       //console.log("This marker has been clicked.....", index);
@@ -65,7 +67,7 @@ class App extends Component {
       //window.map.setZoom(this.state.zoom);
     }
 
-    //Action to take when the infowindow is closed
+    // Action to take when the infowindow is closed.
     whenInfoWindowClosed = () => {
       this.setState({
         zoom: 12,
@@ -75,14 +77,27 @@ class App extends Component {
       })
     }
 
+//--- Mouse events in search list ---//
 
+    // Action to take when location name is selected from the list.
+    whenSearchItemClicked = (id) => {
+      if(id === this.state.markers.id) {
+
+      }
+
+
+      this.whenMarkerClicked();
+    }
 
   render() {
+    console.log('markers array....',this.state.markers);
     return (
       <div className="App">
         <Header />
         <SearchList
           venues = {this.state.venues}
+          markers = {this.state.markers}
+          whenMarkerClicked = {this.whenSearchItemClicked}
         />
         <Map
           googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
