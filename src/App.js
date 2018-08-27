@@ -60,7 +60,7 @@ class App extends Component {
         location: { lat: latitude, lng: longitude },
         icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
       })
-      console.log(latitude,'     ',longitude);
+      //console.log(latitude,'     ',longitude);
       //console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
       //window.map.setZoom(this.state.zoom);
     }
@@ -81,11 +81,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <SearchList />
+        <SearchList
+          venues = {this.state.venues}
+        />
         <Map
           googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
           loadingElement = {<div style={{ height: `100%` }} />}
-          containerElement = {<div style={{ height: `400px` }} />}
+          containerElement = {<div style={{ height: `400px`, width: `400px`, float: 'right' }} />}
           mapElement = {<div style={{ height: `100%` }} />}
           venues = {this.state.venues}
           markers = {this.state.markers}
