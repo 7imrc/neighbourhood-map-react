@@ -22,11 +22,11 @@ const Map = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultZoom={12}
+    defaultCenter={{ lat: 50.8197675, lng: -1.0879769 }}
   >
     <Marker
-      position={{ lat: -34.397, lng: 150.644 }}
+      position={{ lat: 50.8197675, lng: -1.0879769 }}
       onClick={props.onToggleOpen}
     >
       {props.isOpen &&
