@@ -4,7 +4,7 @@ import sortBy from 'sort-by';
 
 class SearchList extends Component {
 
-  // Search query code taken from my previous project.
+  // Search query code based on Udacity lesson.
   state = {
         query: '',
         //venueSearch: []
@@ -37,7 +37,7 @@ class SearchList extends Component {
           onChange={(event) => this.updateQuery(event.target.value)}
         />
         <ul>
-          {this.props.venues.map( (venue, index) => (
+          {showingVenues.map( (venue, index) => (
 
               <li
                 key = {index}
