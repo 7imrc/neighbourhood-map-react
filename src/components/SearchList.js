@@ -1,16 +1,40 @@
 import React, { Component } from 'react';
+import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by';
 
 class SearchList extends Component {
+
+  // Search query code taken from my previous project.
+  state = {
+        query: '',
+        //venueSearch: []
+    }
+
+  updateQuery = (query) => {
+    this.setState({ query: query })
+  }
+
   render() {
     //console.log('venues array...',this.props.venues);
+    let showingVenues;
+    if (this.state.query) {
+      const match = new RegExp(escapeRegExp(this.state.query), 'i');
+      showingVenues = this.props.venues.filter( (venue) => match.test(venue.name));
+    } else {
+      showingVenues = this.props.venues
+    }
+
     return (
       <div
         className = "search-items"
         style = {{ height: '80%', width: '30%', float: 'left' }}
       >
         <input
-          className = "text-field"
+          className = "search-venues"
           type = "text"
+          placeholder = "Enter a venue name"
+          value={this.state.query}
+          onChange={(event) => this.updateQuery(event.target.value)}
         />
         <ul>
           {this.props.venues.map( (venue, index) => (
