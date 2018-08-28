@@ -28,7 +28,9 @@ const Map = compose(
       position = {{ lat: marker.location.lat, lng: marker.location.lng }}
       title = {marker.name}
       onClick = {(e) => props.whenMarkerClicked(index, marker.location.lat, marker.location.lng, e)}
-      icon = {props.icon}
+      // Need to selectively change icon colour here, if do it in the
+      // whenMarkerClicked function, all the markers are changed.
+      icon = {(props.selectedMarkerIndex === index) ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
     >
       {props.selectedMarkerIndex === index &&
         <InfoWindow onCloseClick={props.whenInfoWindowClosed}>

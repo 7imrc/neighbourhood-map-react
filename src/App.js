@@ -56,11 +56,13 @@ class App extends Component {
     // Action to take on clicking a marker
     whenMarkerClicked = (index, latitude, longitude, e) => {
       //console.log("This marker has been clicked.....", index);
+
+
       this.setState({
         selectedMarkerIndex: index,
         zoom: 18,
         location: { lat: latitude, lng: longitude },
-        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        //icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
       })
       //console.log(latitude,'     ',longitude);
       //console.log('selectedMarkerIndex......', this.state.selectedMarkerIndex);
@@ -72,7 +74,7 @@ class App extends Component {
       this.setState({
         zoom: 12,
         location: { lat: 50.8197675, lng: -1.0879769 },
-        icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+        //icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
         selectedMarkerIndex: ''
       })
     }
@@ -80,13 +82,13 @@ class App extends Component {
 
 
   render() {
-    console.log('markers array....',this.state.markers);
+    //console.log('markers array....',this.state.markers);
     return (
       <div className="App">
         <Header />
         <SearchList
           venues = {this.state.venues}
-          markers = {this.state.markers}
+          //markers = {this.state.markers}
           whenMarkerClicked = {this.whenMarkerClicked}
         />
         <Map
