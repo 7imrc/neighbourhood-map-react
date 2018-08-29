@@ -6,7 +6,7 @@ class SearchList extends Component {
 
   // Search query code based on Udacity lesson.
   state = {
-        query: '',
+        //query: '',
         venueSearch: []
     }
 
@@ -34,8 +34,8 @@ class SearchList extends Component {
     // Filter the locations in the search list to those matching locations for
     // text entered in the input field.
     let showingVenues;
-    if (this.state.query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i');
+    if (this.props.query) {
+      const match = new RegExp(escapeRegExp(this.props.query), 'i');
       showingVenues = this.props.venues.filter( (venue) => match.test(venue.name));
       //console.log('showingVenues...', showingVenues);
       //this.props.filterMarkers(showingVenues, this.state.query);
