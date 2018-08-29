@@ -32,7 +32,7 @@ class SearchList extends Component {
     //console.log('venues array...',this.props.venues);
 
     // Filter the locations in the search list to those matching locations for
-    // text entered in the input field.
+    // text entered in the input field.  Code based on that in Udacity lessons.
     let showingVenues;
     if (this.props.query) {
       const match = new RegExp(escapeRegExp(this.props.query), 'i');
@@ -45,13 +45,14 @@ class SearchList extends Component {
       showingVenues = this.props.venues;
       //return showingVenues;
     }
-    let spreadShowingVenues = [...showingVenues];
-    let kickToArray = [...this.state.venueSearch, showingVenues];
+    //let spreadShowingVenues = [...showingVenues];
+    //let kickToArray = [...this.state.venueSearch, showingVenues];
     //this.setState({
     //  venueSearch: showingVenues
     //});
     //let arrayShift = showingVenues;
     //this.filterMarkers(arrayShift);
+
     // Sort the venue names alphabetically
     showingVenues.sort(sortBy('name'));
 

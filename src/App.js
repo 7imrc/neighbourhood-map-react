@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import escapeRegExp from 'escape-string-regexp';
 import './App.css';
 import Header from './components/Header';
 import SearchList from './components/SearchList';
@@ -85,12 +86,30 @@ class App extends Component {
 
     // Update the query state as user enters text in input field.
     updateQuery = (query) => {
-      this.setState({ query: query })
+      this.setState({
+        query: query
+      })
+      this.filterMarkers(query);
     }
 
 
-    // Only display the matching markers to the filtered list
-    filterMarkers = (showingVenues, query) => {
+    // Filter the markers in the search list to those matching locations for
+    // text entered in the input field.  Code based on that in Udacity lessons.
+    filterMarkers = (query) => {
+      let showingMarkers;
+      if (this.state.query) {
+        const match = new RegExp(escapeRegExp(this.state.query),'i');
+        showingMarkers = this.state.markers.filter( (venue) => match.test(venue.name));
+      } else {
+        showingMarkers = this.state.markers;
+      }
+      // Put the filtered markers into an array.
+      this.setState({
+        filteredVenues: showingMarkers
+      })
+      console.log(showingMarkers);
+
+    }
       //this.setState({ filteredSearch: showingVenues});
       //console.log('this is filterMarkers');
       //console.log('showingVenues.....', showingVenues);
@@ -99,29 +118,30 @@ class App extends Component {
       //    markers: showingVenues
       //  })
       //}
-      {/*if (query) {
-        this.setState(prevState => ({
-          markers: [...prevState.markers, showingVenues]
-        }))
-      }
-      console.log(this.state.markers);
-      */}
+    //  {/*if (query) {
+    //    this.setState(prevState => ({
+    //      markers: [...prevState.markers, showingVenues]
+    //    }))
+    //  }
+    //  console.log(this.state.markers);
+    //  */}
       //this.setState({
       //  filteredVenues: showingVenues
       //})
-    }
+    //}
     // Update the filteredVenues array in this state, from the local one in
     // Searchlist.  Code based on watching NetNinja web tutorial at:
     //
-    addFilteredVenues = (filteredVenues) => {
-      let updateFilteredVenues = [...this.state.filteredVenues, filteredVenues];
-      this.setState({
-        filteredVenues: filteredVenues
-      })
-    }
+    //addFilteredVenues = (filteredVenues) => {
+    //  let updateFilteredVenues = [...this.state.filteredVenues, filteredVenues];
+    //  this.setState({
+    //    filteredVenues: filteredVenues
+    //  })
+    //}
 
   render() {
     //console.log('markers array....',this.state.markers);
+    //this.filterMarkers();
     return (
       <div className="App">
         <Header />
@@ -129,8 +149,8 @@ class App extends Component {
           venues = {this.state.venues}
           markers = {this.state.markers}
           whenMarkerClicked = {this.whenMarkerClicked}
-          filterMarkers = {this.filterMarkers}
-          addFilteredVenues = {this.addFilteredVenues}
+          //filterMarkers = {this.filterMarkers}
+          //addFilteredVenues = {this.addFilteredVenues}
           query = {this.state.query}
           updateQuery = {this.updateQuery}
         />
@@ -147,6 +167,7 @@ class App extends Component {
           location = {this.state.location}
           whenInfoWindowClosed = {this.whenInfoWindowClosed}
           icon = {this.state.icon}
+          filteredVenues = {this.state.filteredVenues}
         />
         <Footer />
       </div>

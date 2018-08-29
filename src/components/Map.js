@@ -22,7 +22,7 @@ const Map = compose(
   { // For each marker stored in the marker state array, assign an
     //associated marker.
 
-    props.markers.map( (marker, index) => (
+    props.filteredVenues.map( (marker, index) => (
     <Marker
       key = {index}
       position = {{ lat: marker.location.lat, lng: marker.location.lng }}
