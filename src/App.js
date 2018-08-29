@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 class App extends Component {
 
   // Set the states for the app.
-    state = {
+  state = {
       venues: [],
       markers: [],
       filteredSearch: [],
@@ -20,8 +20,7 @@ class App extends Component {
       icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
       query: '',
       filteredVenues: []
-    }
-
+  }
 
   componentDidMount() {
       // Get the external data.
@@ -42,7 +41,8 @@ class App extends Component {
           .then( (data) => {
             this.setState({
               venues: data.response.venues,
-              markers: data.response.venues
+              markers: data.response.venues,
+              filteredVenues: data.response.venues
             })
           })
           // Error checking, log the contents of the venues array, to compare.
@@ -95,20 +95,40 @@ class App extends Component {
 
     // Filter the markers in the search list to those matching locations for
     // text entered in the input field.  Code based on that in Udacity lessons.
+
+    // The bug of a lag with markers, was caused by me using this.state.query
+    // within the if statement below. It needs to just be 'query' as passed in!
+    // Many hours of trying many methods to fix setState asynchronisity, and
+    // it was this simple fix!
     filterMarkers = (query) => {
       let showingMarkers;
-      if (this.state.query) {
-        const match = new RegExp(escapeRegExp(this.state.query),'i');
+      if (query) {
+        const match = new RegExp(escapeRegExp(query),'i');
         showingMarkers = this.state.markers.filter( (venue) => match.test(venue.name));
+        console.log('filtered.......',showingMarkers);
+
       } else {
         showingMarkers = this.state.markers;
+        console.log('unfiltered.......',showingMarkers);
       }
       // Put the filtered markers into an array.
       this.setState({
         filteredVenues: showingMarkers
-      })
-      console.log(showingMarkers);
+        //filteredVenues: this.fixAsync(showingMarkers)
+      }), () => this.forceUpdate();
+      // From https://stackoverflow.com/questions/36071350/update-state-with-onchange-event-have-a-delay-character
+      // This answer does not fix the lag
+      //this.state.filteredVenues = showingMarkers; this.forceUpdate();
+    }
 
+    // This is a test to see if I can fix the async issue with the delay in
+    // the markers updating.
+    fixAsync = (showingMarkers) => {
+      return(prevState, currProps) => {
+        return {
+          ...prevState, filteredVenues: showingMarkers
+        };
+      };
     }
       //this.setState({ filteredSearch: showingVenues});
       //console.log('this is filterMarkers');
