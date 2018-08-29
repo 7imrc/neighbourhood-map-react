@@ -12,10 +12,12 @@ class App extends Component {
     state = {
       venues: [],
       markers: [],
+      filteredSearch: [],
       selectedMarkerIndex: '',
       zoom: 12,
       location: { lat: 50.8197675, lng: -1.0879769 },
-      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      filteredVenues: []
     }
 
 
@@ -79,7 +81,36 @@ class App extends Component {
       })
     }
 
-
+    // Only display the matching markers to the filtered list
+    filterMarkers = (showingVenues, query) => {
+      //this.setState({ filteredSearch: showingVenues});
+      //console.log('this is filterMarkers');
+      //console.log('showingVenues.....', showingVenues);
+      //if(query) {
+      //  this.setState({
+      //    markers: showingVenues
+      //  })
+      //}
+      {/*if (query) {
+        this.setState(prevState => ({
+          markers: [...prevState.markers, showingVenues]
+        }))
+      }
+      console.log(this.state.markers);
+      */}
+      //this.setState({
+      //  filteredVenues: showingVenues
+      //})
+    }
+    // Update the filteredVenues array in this state, from the local one in
+    // Searchlist.  Code based on watching NetNinja web tutorial at:
+    // 
+    addFilteredVenues = (filteredVenues) => {
+      let updateFilteredVenues = [...this.state.filteredVenues, filteredVenues];
+      this.setState({
+        filteredVenues: filteredVenues
+      })
+    }
 
   render() {
     //console.log('markers array....',this.state.markers);
@@ -88,8 +119,10 @@ class App extends Component {
         <Header />
         <SearchList
           venues = {this.state.venues}
-          //markers = {this.state.markers}
+          markers = {this.state.markers}
           whenMarkerClicked = {this.whenMarkerClicked}
+          filterMarkers = {this.filterMarkers}
+          addFilteredVenues = {this.addFilteredVenues}
         />
         <Map
           googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
