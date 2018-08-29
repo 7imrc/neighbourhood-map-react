@@ -17,6 +17,7 @@ class App extends Component {
       zoom: 12,
       location: { lat: 50.8197675, lng: -1.0879769 },
       icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      query: '',
       filteredVenues: []
     }
 
@@ -81,6 +82,13 @@ class App extends Component {
       })
     }
 
+
+    // Update the query state as user enters text in input field.
+    updateQuery = (query) => {
+      this.setState({ query: query })
+    }
+
+
     // Only display the matching markers to the filtered list
     filterMarkers = (showingVenues, query) => {
       //this.setState({ filteredSearch: showingVenues});
@@ -104,7 +112,7 @@ class App extends Component {
     }
     // Update the filteredVenues array in this state, from the local one in
     // Searchlist.  Code based on watching NetNinja web tutorial at:
-    // 
+    //
     addFilteredVenues = (filteredVenues) => {
       let updateFilteredVenues = [...this.state.filteredVenues, filteredVenues];
       this.setState({
@@ -123,6 +131,8 @@ class App extends Component {
           whenMarkerClicked = {this.whenMarkerClicked}
           filterMarkers = {this.filterMarkers}
           addFilteredVenues = {this.addFilteredVenues}
+          query = {this.state.query}
+          updateQuery = {this.updateQuery}
         />
         <Map
           googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
