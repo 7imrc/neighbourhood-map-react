@@ -63,7 +63,7 @@ class SearchList extends Component {
     return (
       <div
         className = "search-items"
-        style = {{ height: '80%', width: '30%', float: 'left' }}
+        //style = {{ height: '80%', width: '30%', float: 'left' }}
       >
         <input
           className = "search-venues"

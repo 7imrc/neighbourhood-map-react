@@ -177,7 +177,7 @@ class App extends Component {
         <Map
           googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
           loadingElement = {<div style={{ height: `100%` }} />}
-          containerElement = {<div style={{ height: `400px`, width: `400px`, float: 'right' }} />}
+          containerElement = {<div style={{ height: 100+`%`, width: `400px`, float: 'right' }} />}
           mapElement = {<div style={{ height: `100%` }} />}
           venues = {this.state.venues}
           markers = {this.state.markers}
