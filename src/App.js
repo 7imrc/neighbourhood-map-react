@@ -164,32 +164,39 @@ class App extends Component {
     //this.filterMarkers();
     return (
       <div className="App">
-        <Header />
-        <SearchList
-          venues = {this.state.venues}
-          markers = {this.state.markers}
-          whenMarkerClicked = {this.whenMarkerClicked}
-          //filterMarkers = {this.filterMarkers}
-          //addFilteredVenues = {this.addFilteredVenues}
-          query = {this.state.query}
-          updateQuery = {this.updateQuery}
-        />
-        <Map
-          googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
-          loadingElement = {<div style={{ height: `100%` }} />}
-          containerElement = {<div style={{ height: 100+`%`, width: `400px`, float: 'right' }} />}
-          mapElement = {<div style={{ height: `100%` }} />}
-          venues = {this.state.venues}
-          markers = {this.state.markers}
-          whenMarkerClicked = {this.whenMarkerClicked}
-          selectedMarkerIndex = {this.state.selectedMarkerIndex}
-          zoom = {this.state.zoom}
-          location = {this.state.location}
-          whenInfoWindowClosed = {this.whenInfoWindowClosed}
-          icon = {this.state.icon}
-          filteredVenues = {this.state.filteredVenues}
-        />
-        <Footer />
+        <div className="flex-container">
+          <Header />
+          <SearchList
+            venues = {this.state.venues}
+            markers = {this.state.markers}
+            whenMarkerClicked = {this.whenMarkerClicked}
+            //filterMarkers = {this.filterMarkers}
+            //addFilteredVenues = {this.addFilteredVenues}
+            query = {this.state.query}
+            updateQuery = {this.updateQuery}
+          />
+
+          <div className="map-container" style= {{height: 50+'vh', width: 50+'vh', background:'red'}}>
+              <Map
+                className = "map-wrapper"
+                googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
+                loadingElement = {<div style={{ height: `100%` }} />}
+                containerElement = {<div style={{ height: 100+`%`, width: 100+`%` }} />}
+                mapElement = {<div style={{ height: `100%` }} />}
+                venues = {this.state.venues}
+                markers = {this.state.markers}
+                whenMarkerClicked = {this.whenMarkerClicked}
+                selectedMarkerIndex = {this.state.selectedMarkerIndex}
+                zoom = {this.state.zoom}
+                location = {this.state.location}
+                whenInfoWindowClosed = {this.whenInfoWindowClosed}
+                icon = {this.state.icon}
+                filteredVenues = {this.state.filteredVenues}
+              />
+          </div>
+
+          <Footer />
+        </div>
       </div>
     );
   }

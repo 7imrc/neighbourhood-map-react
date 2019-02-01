@@ -1,21 +1,31 @@
 .App {
   text-align: center;
-  display: flex;
+  /* display: flex; */
 }
 
 .html {
-  height: 100%
+  height: 100%;
+  width: 100%;
+}
+
+
+.flex-container {
+  display: flex;
+  background: #fff;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
 }
 
 /* Header */
 
 .header {
-  height: 10%;
+  height: 10vh;
   position: fixed;
   top: 0;
   color: white;
   background-color: grey;
-  width: 100%;
+  width: 100vw;
 }
 
 .header, h1 {
@@ -24,22 +34,25 @@
 
 /* SearchList */
 
+/*
 .search-list {
   height: calc(100vh-150px);
-
 }
+*/
 .search-items {
-  width: 150px;
+  width: 40%;
+  
   overflow-y: scroll;
 }
 
-
+/*
 .search-items, ul {
   width: 50%;
   float: left;
   margin: 0;
   padding: 0;
 }
+*/
 .search-items, li {
   margin: 5px;
   padding: 5px;
@@ -52,13 +65,23 @@
   height: 50px;
   border-color: red;
 }
+
+/* Map */
+
+.map-wrapper {
+  width: 70vw;
+  height: 75vh;
+}
+
+/* Footer */
+
 .footer {
-  height: 5%;
+  height: 5vh;
   position: fixed;
   bottom: 0;
   color: white;
   background-color: grey;
-  width: 100%;
+  width: 100vw;
 }
 
 .footer, h3 {
