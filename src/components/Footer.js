@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <h3>Produced in conjunction with FourSquare and Google Maps.</h3>
+        <h3>Data provided by FourSquare and Google Maps.</h3>
       </div>
     );
   }

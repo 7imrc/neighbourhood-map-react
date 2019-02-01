@@ -166,6 +166,8 @@ class App extends Component {
       <div className="App">
         <div className="flex-container">
           <Header />
+
+
           <SearchList
             venues = {this.state.venues}
             markers = {this.state.markers}
@@ -176,9 +178,8 @@ class App extends Component {
             updateQuery = {this.updateQuery}
           />
 
-          <div className="map-container" style= {{height: 50+'vh', width: 50+'vh', background:'red'}}>
+          <div className="map-container">
               <Map
-                className = "map-wrapper"
                 googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement = {<div style={{ height: `100%` }} />}
                 containerElement = {<div style={{ height: 100+`%`, width: 100+`%` }} />}
@@ -194,6 +195,7 @@ class App extends Component {
                 filteredVenues = {this.state.filteredVenues}
               />
           </div>
+
 
           <Footer />
         </div>
