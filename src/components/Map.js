@@ -12,6 +12,15 @@ const {
 
 const Map = compose(
 
+  lifecycle({
+    componentDidMount() {
+      //Error handling for Google Maps authentication failure
+      window.gm_authFailure = () => {
+        alert("There has been a problem with the Google Maps authentication code");
+      }
+    }
+  }),
+
   withScriptjs,
   withGoogleMap
 )(props =>
