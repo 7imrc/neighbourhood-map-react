@@ -87,9 +87,9 @@ class App extends Component {
     // Action to take on 'enter' key used
     whenKeyPressed = (index, latitude, longitude, e) => {
       if (e.key === 'Enter') {
-        console.log("The enter key was pressed");
+        //console.log("The enter key was pressed");
         this.whenMarkerClicked (index, latitude, longitude, e);
-      }
+        }
     }
 
     // Update the query state as user enters text in input field.

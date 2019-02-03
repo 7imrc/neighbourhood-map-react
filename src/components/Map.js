@@ -46,8 +46,32 @@ const Map = compose(
         (<InfoWindow
             tabIndex={0}
             aria-label="Details of selected museum"
-            onCloseClick={props.whenInfoWindowClosed}>
-          <div tabIndex={0} >{marker.name}</div>
+            onCloseClick={props.whenInfoWindowClosed}
+          >
+            <div>
+              <ul
+                className="Infowindow details"
+                aria-label="Details of selected museum"
+                tabIndex={0}
+              >
+                { (marker.location.address===undefined) &&
+                  <div>
+                    <li>{marker.name}</li>
+                    <li>No address available for this museum from Foursquare.</li>
+                  </div>
+                }
+                { (marker.location.address!==undefined) &&
+                  <div>
+                    <li>{marker.name}</li>
+                    <li>{marker.location.address}</li>
+                    <li>{marker.location.city}</li>
+                    <li>{marker.location.state}</li>
+                    <li>{marker.location.postalCode}</li>
+                  </div>
+                }
+
+              </ul>
+            </div>
         </InfoWindow>)
       }
     </Marker>
