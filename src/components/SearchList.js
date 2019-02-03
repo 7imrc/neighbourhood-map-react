@@ -83,6 +83,7 @@ class SearchList extends Component {
               <li
                 key = {index}
                 onClick = {(e) => this.props.whenMarkerClicked(index, venue.location.lat, venue.location.lng, e)}
+                onKeyPress = { (e) => this.props.whenKeyPressed(index, venue.location.lat, venue.location.lng, e)}
                 tabIndex = {0}
                 role = "menuitem"
               >
