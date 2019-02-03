@@ -42,10 +42,13 @@ const Map = compose(
       // whenMarkerClicked function, all the markers are changed.
       icon = {(props.selectedMarkerIndex === index) ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
     >
-      {props.selectedMarkerIndex === index &&
-        <InfoWindow onCloseClick={props.whenInfoWindowClosed}>
-          <div>{marker.name}</div>
-        </InfoWindow>
+      {(props.selectedMarkerIndex === index) &&
+        (<InfoWindow
+            tabIndex={0}
+            aria-label="Details of selected museum"
+            onCloseClick={props.whenInfoWindowClosed}>
+          <div tabIndex={0} >{marker.name}</div>
+        </InfoWindow>)
       }
     </Marker>
   ))}

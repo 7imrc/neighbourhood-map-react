@@ -63,21 +63,28 @@ class SearchList extends Component {
     return (
       <div
         className = "search-items"
+        tabIndex = {0}
         //style = {{ height: '80%', width: '30%', float: 'left' }}
       >
         <input
           className = "search-venues"
           type = "text"
+          aria-label = "Enter a venue name"
           placeholder = "Enter a venue name"
           value={this.state.query}
           onChange={(event) => this.props.updateQuery(event.target.value)}
         />
-        <ul>
+        <ul
+          tabIndex = {0}
+          aria-label = "List of museums in Portsmouth"
+        >
           {showingVenues.map( (venue, index) => (
 
               <li
                 key = {index}
                 onClick = {(e) => this.props.whenMarkerClicked(index, venue.location.lat, venue.location.lng, e)}
+                tabIndex = {0}
+                role = "menuitem"
               >
                 {venue.name}
               </li>

@@ -177,7 +177,12 @@ class App extends Component {
             updateQuery = {this.updateQuery}
           />
 
-          <div className="map-container">
+          <div
+            className="map-container"
+            aria-label="Map of Portsmouth museums"
+            role="application"
+            tabIndex={0}
+          >
             { (navigator.onLine) &&
               (<Map
                 googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
