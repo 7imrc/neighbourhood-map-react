@@ -6,7 +6,6 @@ import SearchList from './components/SearchList';
 import Map from './components/Map';
 import Footer from './components/Footer';
 
-
 class App extends Component {
 
   // Set the states for the app.
@@ -179,7 +178,8 @@ class App extends Component {
           />
 
           <div className="map-container">
-              <Map
+            { (navigator.onLine) &&
+              (<Map
                 googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBUF2UVab_IvfyF7rJPQNzWaF8fs-dN8&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement = {<div style={{ height: `100%` }} />}
                 containerElement = {<div style={{ height: 100+`%`, width: 100+`%` }} />}
@@ -193,7 +193,13 @@ class App extends Component {
                 whenInfoWindowClosed = {this.whenInfoWindowClosed}
                 icon = {this.state.icon}
                 filteredVenues = {this.state.filteredVenues}
-              />
+              />)
+            }
+            {(!navigator.onLine) &&
+              <div className="map-offline">
+                <h1>There has been a problem connecting to Google Maps.</h1>
+              </div>
+            }
           </div>
 
 

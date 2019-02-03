@@ -1,7 +1,7 @@
 // Code based on that provided by the react-google-map documentation
 // from https://tomchentw.github.io/react-google-maps/#infowindow
 import React from 'react';
-const { compose } = require("recompose");
+const { compose, lifecycle } = require("recompose");
 const {
   withScriptjs,
   withGoogleMap,
@@ -11,6 +11,7 @@ const {
 } = require("react-google-maps");
 
 const Map = compose(
+
   withScriptjs,
   withGoogleMap
 )(props =>
