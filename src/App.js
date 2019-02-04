@@ -14,7 +14,7 @@ class App extends Component {
       markers: [],
       filteredSearch: [],
       selectedMarkerIndex: '',
-      zoom: 12,
+      zoom: 10,
       location: { lat: 50.8197675, lng: -1.0879769 },
       icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
       query: '',
@@ -75,7 +75,7 @@ class App extends Component {
     // Action to take when the infowindow is closed.
     whenInfoWindowClosed = () => {
       this.setState({
-        zoom: 12,
+        zoom: 10,
         location: { lat: 50.8197675, lng: -1.0879769 },
         //icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
         selectedMarkerIndex: ''
@@ -113,17 +113,17 @@ class App extends Component {
       if (query) {
         const match = new RegExp(escapeRegExp(query),'i');
         showingMarkers = this.state.markers.filter( (venue) => match.test(venue.name));
-        console.log('filtered.......',showingMarkers);
+        //console.log('filtered.......',showingMarkers);
 
       } else {
         showingMarkers = this.state.markers;
-        console.log('unfiltered.......',showingMarkers);
+        //console.log('unfiltered.......',showingMarkers);
       }
       // Put the filtered markers into an array.
       this.setState({
         filteredVenues: showingMarkers
         //filteredVenues: this.fixAsync(showingMarkers)
-      }), () => this.forceUpdate();
+      }); () => this.forceUpdate();
       // From https://stackoverflow.com/questions/36071350/update-state-with-onchange-event-have-a-delay-character
       // This answer does not fix the lag
       //this.state.filteredVenues = showingMarkers; this.forceUpdate();
