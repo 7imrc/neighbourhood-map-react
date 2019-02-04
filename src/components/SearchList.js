@@ -6,27 +6,8 @@ class SearchList extends Component {
 
   // Search query code based on Udacity lesson.
   state = {
-        //query: '',
         venueSearch: []
     }
-
-  // Update the query state as user enters text in input field.
-  //updateQuery = (query) => {
-  //  this.props.query.setState({ query: query })
-  //}
-
-  // Only display the matching markers to the filtered list
-//  filterMarkers = (showingVenues) => {
-//    this.setState({ venueSearch: showingVenues});
-    //console.log('this is filterMarkers');
-//  }
-
-  //
-//  filterMarkers = (showingVenues) => {
-//    this.props.addFilteredVenues(showingVenues);
-//  }
-
-
 
   render() {
     //console.log('venues array...',this.props.venues);
@@ -45,26 +26,14 @@ class SearchList extends Component {
       showingVenues = this.props.venues;
       //return showingVenues;
     }
-    //let spreadShowingVenues = [...showingVenues];
-    //let kickToArray = [...this.state.venueSearch, showingVenues];
-    //this.setState({
-    //  venueSearch: showingVenues
-    //});
-    //let arrayShift = showingVenues;
-    //this.filterMarkers(arrayShift);
 
     // Sort the venue names alphabetically
     showingVenues.sort(sortBy('name'));
-
-
-
-
 
     return (
       <div
         className = "search-items"
         tabIndex = {0}
-        //style = {{ height: '80%', width: '30%', float: 'left' }}
       >
         <input
           className = "search-venues"

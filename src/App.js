@@ -30,11 +30,12 @@ class App extends Component {
     fourSquareLoad = () => {
       fetch ("https://api.foursquare.com/v2/venues/search?ll=50.8197675,-1.0879769&intent=browse&radius=30000&query=museum&client_id=HAXM4EPTKFN0LVOHYTA312KBRVX1FXE0SXVFUYCJJKTCYL0J&client_secret=IJC5CLYWJ4R4GDYSUGH3TJ24DP4JAWBKSC2A0GNXJSBVDVCO&v=20180824")
           .then( (response) => response.json())
-          .then( (response) => {
+          //.then( (response) => {
             // Error checking to see if received data is in correct format
             //console.log(response.response.venues)
-            return response
-          })
+            //return response
+          //})
+
           // Pass the received data in the correct format to be stored in the empty
           // venues array in state.
           .then( (data) => {
@@ -45,9 +46,10 @@ class App extends Component {
             })
           })
           // Error checking, log the contents of the venues array, to compare.
-          .then( () => {
+          //.then( () => {
             //console.log(this.state.venues)
-          })
+          //})
+
           // If unable to obtain data from Foursquare, alert the user.
           .catch ( (error) => {
             alert("There has been a problem trying to get the locations data from Foursquare......please try again");
@@ -130,43 +132,6 @@ class App extends Component {
       //this.state.filteredVenues = showingMarkers; this.forceUpdate();
     }
 
-    // This is a test to see if I can fix the async issue with the delay in
-    // the markers updating.
-    //fixAsync = (showingMarkers) => {
-      //return(prevState, currProps) => {
-        //return {
-          //...prevState, filteredVenues: showingMarkers
-        //};
-      //};
-    //}
-      //this.setState({ filteredSearch: showingVenues});
-      //console.log('this is filterMarkers');
-      //console.log('showingVenues.....', showingVenues);
-      //if(query) {
-      //  this.setState({
-      //    markers: showingVenues
-      //  })
-      //}
-    //  {/*if (query) {
-    //    this.setState(prevState => ({
-    //      markers: [...prevState.markers, showingVenues]
-    //    }))
-    //  }
-    //  console.log(this.state.markers);
-    //  */}
-      //this.setState({
-      //  filteredVenues: showingVenues
-      //})
-    //}
-    // Update the filteredVenues array in this state, from the local one in
-    // Searchlist.  Code based on watching NetNinja web tutorial at:
-    //
-    //addFilteredVenues = (filteredVenues) => {
-    //  let updateFilteredVenues = [...this.state.filteredVenues, filteredVenues];
-    //  this.setState({
-    //    filteredVenues: filteredVenues
-    //  })
-    //}
 
   render() {
     //console.log('markers array....',this.state.markers);
@@ -211,7 +176,8 @@ class App extends Component {
                 filteredVenues = {this.state.filteredVenues}
               />)
             }
-            {(!navigator.onLine) &&
+            { //Notify the user if unable to connect to Google Maps.
+              (!navigator.onLine) &&
               <div className="map-offline">
                 <h1>There has been a problem connecting to Google Maps.</h1>
               </div>

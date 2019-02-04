@@ -54,13 +54,15 @@ const Map = compose(
                 aria-label="Details of selected museum"
                 tabIndex={0}
               >
-                { (marker.location.address===undefined) &&
+                { //If no address held in Foursquare then notify user
+                  (marker.location.address===undefined) &&
                   <div>
                     <li className="museum-title">{marker.name}</li>
                     <li className="no-address">No address available for this museum from Foursquare.</li>
                   </div>
                 }
-                { (marker.location.address!==undefined) &&
+                { //Display address details from Foursquare
+                  (marker.location.address!==undefined) &&
                   <div>
                     <li className="museum-title">{marker.name}</li>
                     <li>{marker.location.address}</li>
