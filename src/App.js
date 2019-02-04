@@ -131,13 +131,13 @@ class App extends Component {
 
     // This is a test to see if I can fix the async issue with the delay in
     // the markers updating.
-    fixAsync = (showingMarkers) => {
-      return(prevState, currProps) => {
-        return {
-          ...prevState, filteredVenues: showingMarkers
-        };
-      };
-    }
+    //fixAsync = (showingMarkers) => {
+      //return(prevState, currProps) => {
+        //return {
+          //...prevState, filteredVenues: showingMarkers
+        //};
+      //};
+    //}
       //this.setState({ filteredSearch: showingVenues});
       //console.log('this is filterMarkers');
       //console.log('showingVenues.....', showingVenues);

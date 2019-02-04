@@ -21,7 +21,6 @@
 
 .header {
   height: 15vh;
-  /*position: fixed;*/
   top: 0;
   color: white;
   background-color: grey;
@@ -29,52 +28,32 @@
 }
 
 .header h1 {
-  /*float: right;*/
   font-size: 60px;
 }
 
 /* SearchList */
 
-/*
-.search-list {
-  height: calc(100vh-150px);
-}
-*/
 .search-items {
   width: 30vw;
   height: 75vh;
-  /*overflow-y: scroll;*/
-
 }
 
-/*
-.search-items, ul {
-  width: 50%;
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-*/
 .search-items li {
   margin: 5px;
   padding: 5px;
   border-top : 1px solid black;
   list-style-type: none;
   font-size: 20px;
-  /*overflow-y: scroll; */
-
 }
 
 .search-items ul {
   height: 85%;
   overflow-y: scroll;
-
 }
 
 .search-venues {
   width: 90%;
   height: 5%;
-  /*border-color: red;*/
   margin: 5px;
   font-size: 20px;
   padding: 5px;
@@ -88,13 +67,6 @@
   margin: 0;
   padding:0;
 }
-
-/*
-.map-wrapper {
-  width: 70vw;
-  height: 75vh;
-}
-*/
 
 /* Infowindow */
 
@@ -110,11 +82,11 @@
 .no-address {
   color: red;
 }
+
 /* Footer */
 
 .footer {
   height: 10vh;
-  /*position: fixed;*/
   bottom: 0;
   color: white;
   background-color: grey;
