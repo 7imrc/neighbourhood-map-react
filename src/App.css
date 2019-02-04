@@ -96,6 +96,20 @@
 }
 */
 
+/* Infowindow */
+
+.Infowindow-details {
+  font-size: 12;
+  list-style-type: none;
+}
+
+.museum-title {
+  text-decoration: underline;
+}
+
+.no-address {
+  color: red;
+}
 /* Footer */
 
 .footer {
@@ -135,7 +149,7 @@
 
   .search-venues {
     height: 10px;
-    font-size: 10px; 
+    font-size: 10px;
     width: 80%;
   }
 

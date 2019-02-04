@@ -50,19 +50,19 @@ const Map = compose(
           >
             <div>
               <ul
-                className="Infowindow details"
+                className="Infowindow-details"
                 aria-label="Details of selected museum"
                 tabIndex={0}
               >
                 { (marker.location.address===undefined) &&
                   <div>
-                    <li>{marker.name}</li>
-                    <li>No address available for this museum from Foursquare.</li>
+                    <li className="museum-title">{marker.name}</li>
+                    <li className="no-address">No address available for this museum from Foursquare.</li>
                   </div>
                 }
                 { (marker.location.address!==undefined) &&
                   <div>
-                    <li>{marker.name}</li>
+                    <li className="museum-title">{marker.name}</li>
                     <li>{marker.location.address}</li>
                     <li>{marker.location.city}</li>
                     <li>{marker.location.state}</li>
