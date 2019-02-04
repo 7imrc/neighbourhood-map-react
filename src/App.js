@@ -123,8 +123,9 @@ class App extends Component {
       this.setState({
         filteredVenues: showingMarkers
         //filteredVenues: this.fixAsync(showingMarkers)
-      }); () => this.forceUpdate();
+      })
       // From https://stackoverflow.com/questions/36071350/update-state-with-onchange-event-have-a-delay-character
+      //this.forceUpdate();
       // This answer does not fix the lag
       //this.state.filteredVenues = showingMarkers; this.forceUpdate();
     }
